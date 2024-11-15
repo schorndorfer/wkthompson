@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Text Analysis &#8212; Notes from a Sentient Being</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'arxiv-extract';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="llamachain" href="llamachain.html" />
+    <link rel="prev" title="arXiv Dataset" href="arxiv-dataset.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/octopus.jpg" class="logo__image only-light" alt="Notes from a Sentient Being - Home"/>
+    <img src="_static/octopus.jpg" class="logo__image only-dark pst-js-only" alt="Notes from a Sentient Being - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    What is this?
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="arxiv-dataset.html">arXiv Dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="llamachain.html">llamachain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dspy.html">DSPy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/schorndorfer/sentient-being" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/schorndorfer/sentient-being/issues/new?title=Issue%20on%20page%20%2Farxiv-extract.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/arxiv-extract.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Text Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="text-analysis">
+<h1>Text Analysis<a class="headerlink" href="#text-analysis" title="Link to this heading">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Research Idea</p>
+<p>Identify LLM researchers, which sub-topics they are working on, and whether there is geographical specialization.</p>
+<ol class="arabic simple">
+<li><p>Who are the researchers?</p></li>
+<li><p>Where they are located?</p></li>
+<li><p>What topics do they work on? (future work)</p></li>
+</ol>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Development Workflow</div>
+<ul class="simple">
+<li><p class="sd-card-text">Identify a dataset and specify precisely what you want to do with it</p></li>
+<li><p class="sd-card-text">Engineer a prompt (use OpenAI Playground)</p></li>
+<li><p class="sd-card-text">Evaluate performance on a sample</p>
+<ul>
+<li><p class="sd-card-text">If performance is unacceptable, try further prompt engineering, functions, etc.</p></li>
+<li><p class="sd-card-text">If performance is still not good enough, try fine-tuning</p></li>
+</ul>
+</li>
+<li><p class="sd-card-text">Deploy at scale</p></li>
+</ul>
+<figure class="align-default" id="gpt-dev-cycle">
+<a class="reference internal image-reference" href="_images/gpt-dev-cycle.png"><img alt="_images/gpt-dev-cycle.png" src="_images/gpt-dev-cycle.png" style="width: 500px;" /></a>
+</figure>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Gather Data</p>
+<p>Promising dataset: <a class="reference external" href="https://arxiv.org/">arXiv</a></p>
+<ul class="simple">
+<li><p>Almost all LLM papers of note are posted here</p></li>
+<li><p>PDF files are freely available (~2 million covering STEM fields)</p></li>
+<li><p>Limited amount of <a class="reference external" href="https://www.kaggle.com/datasets/Cornell-University/arxiv/">metadata</a> is also available</p></li>
+<li><p>Downloaded ~20K recent papers, filtered for ones containing the phrase <code class="docutils literal notranslate"><span class="pre">Large</span> <span class="pre">Language</span> <span class="pre">Model</span></code> in the abstract. Resulting dataset ~1.7K PDFs + Metadata</p></li>
+<li><p>Extracted 1st page of text from each PDF</p></li>
+</ul>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<a class="reference external" href="https://arxiv.org/">arXiv</a></div>
+<figure class="align-default" id="arxiv">
+<a class="reference internal image-reference" href="_images/arxiv.png"><img alt="_images/arxiv.png" src="_images/arxiv.png" style="width: 600px;" /></a>
+</figure>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/arxiv_metadata.parquet&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;data/arxiv_metadata.parquet&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Specify what information to extract</p>
+<ul class="simple">
+<li><p>title</p></li>
+<li><p>list of author names</p></li>
+<li><p>each author’s email address</p></li>
+<li><p>each author’s affiliation</p></li>
+<li><p>each affiliation’s location in terms of latitude and longitude</p></li>
+</ul>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The paper&#39;s title&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;authors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;author&#39;s name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;name@domain.edu&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;affiliations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;list of indices&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;affiliations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span>
+<span class="w">        </span><span class="p">{</span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the index&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The affiliation name&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">&quot;longitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the longitude&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">&quot;latitude&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the latitude&quot;</span><span class="w"> </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<figure class="align-default" id="arxiv-paper-header">
+<a class="reference internal image-reference" href="_images/arxiv-paper-header.png"><img alt="_images/arxiv-paper-header.png" src="_images/arxiv-paper-header.png" style="width: 600px;" /></a>
+</figure>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Develop a Prompt</p>
+<p><a class="reference external" href="https://platform.openai.com/playground">OpenAI playground</a></p>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Prompt engineering</div>
+<p class="sd-card-text">There are various prompting strategies you can use to improve performance. <a class="reference external" href="https://platform.openai.com/docs/guides/prompt-engineering/strategy-write-clear-instructions">OpenAI</a> has a very good guide to help you out. They also provide lots of examples to look at.</p>
+<p class="sd-card-text">Here are a couple of my tries:</p>
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://platform.openai.com/playground/p/ZkcCdLO06jFsXm25og4Vcy5f?model=gpt-4-1106-preview&amp;amp;mode=chat">First attempt</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://platform.openai.com/playground/p/sFEEvUESoQKSDnj6P0SVnJge?model=gpt-4-1106-preview&amp;amp;mode=chat">Final attempt</a></p></li>
+</ul>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+
+<span class="c1"># load the .env file containing your API key</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+<span class="n">openai</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from openai import OpenAI</span>
+
+<span class="c1"># client = OpenAI()</span>
+
+<span class="c1"># response = client.chat.completions.create(</span>
+<span class="c1">#     model=&quot;gpt-4-1106-preview&quot;,</span>
+<span class="c1">#     messages=[</span>
+<span class="c1">#         {</span>
+<span class="c1">#             &quot;role&quot;: &quot;system&quot;,</span>
+<span class="c1">#             &quot;content&quot;: &quot;You are an expert research librarian. You are precise and can analyze the structure of papers very well. You return information in json format.&quot;,</span>
+<span class="c1">#         },</span>
+<span class="c1">#         {</span>
+<span class="c1">#             &quot;role&quot;: &quot;user&quot;,</span>
+<span class="c1">#             &quot;content&quot;: &#39;Extract the title and authors and affiliations from the first page of a scientific paper. \n\nUse the following step-by-step instructions to respond to user inputs.\n\nExtract the title and authors from the first page of a scientific paper. The paper text will snipped will be delimited by triple quotes. Geolocate each author affiliation with latitude and longitude.\n\nThe output should have the following format:\n\n{ &quot;title&quot;: &quot;The paper\&#39;s title&quot;,\n  &quot;authors&quot;: [\n    {\n      &quot;name&quot;: &quot;Yong Ren&quot;,\n      &quot;email&quot;: null,\n      &quot;affiliations&quot;: [ &quot;list of indices&quot; ]\n    }\n  ],\n &quot;affiliations&quot;: [ {&quot;index&quot;: &quot;the index&quot;, &quot;name&quot;: &quot;The affiliation name&quot;, &quot;longitude&quot;: &quot;the longitude&quot;, &quot;latitude&quot;: &quot;the latitude&quot; } ]\n ]\n}\n\n&quot;&quot;&quot;\nFEWER-TOKEN NEURAL SPEECH CODEC WITH TIME-INVARIANT CODES\nYong Ren1,2, Tao Wang1, Jiangyan Yi1, Le Xu1,2, Jianhua Tao3, Chuyuan Zhang1,2, Junzuo Zhou1,2\n1Institute of Automation, Chinese Academy of Sciences, China\n2University of Chinese Academy of Sciences, China\n3Department of Automation, Tsinghua University, China\nABSTRACT\nLanguage model based text-to-speech (TTS) models, like VALL-E,\nhave gained attention for their outstanding in-context learning capa-\nbility in zero-shot scenarios. Neural speech codec is a critical com-\nponent of these models, which can convert speech into discrete token\nrepresentations. However, excessive token sequences from the codec\nmay negatively affect prediction accuracy and restrict the progres-\nsion of Language model based TTS models. To address this issue,\nthis paper proposes a novel neural speech codec with time-invariant\ncodes named TiCodec. By encoding and quantizing time-invariant\ninformation into a separate code, TiCodec can reduce the amount of\nframe-level information that needs encoding, effectively decreasing\nthe number of tokens as codes of speech. Furthermore, this paper\nintroduces a time-invariant encoding consistency loss to enhance the\nconsistency of time-invariant code within an utterance and force it\nto capture more global information, which can benefit the zero-shot\nTTS task. Experimental results demonstrate that TiCodec can not\nonly enhance the quality of reconstruction speech with fewer tokens\nbut also increase the similarity and naturalness, as well as reduce the\nword error rate of the synthesized speech by the TTS model.\nIndex Terms— speech codec, fewer tokens, time-invariant, lan-\nguage model, text-to-speech\n&quot;&quot;&quot;\n &#39;,</span>
+<span class="c1">#         },</span>
+<span class="c1">#     ],</span>
+<span class="c1">#     response_format={&quot;type&quot;: &quot;json_object&quot;},</span>
+<span class="c1">#     temperature=0,</span>
+<span class="c1">#     max_tokens=2048,</span>
+<span class="c1">#     top_p=1,</span>
+<span class="c1">#     frequency_penalty=0,</span>
+<span class="c1">#     presence_penalty=0,</span>
+<span class="c1">#     seed=42,</span>
+<span class="c1"># )</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import json</span>
+
+<span class="c1"># data = json.loads(response.choices[0].message.content)</span>
+<span class="c1"># print(json.dumps(data, indent=4))</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">{</span>
+<span class="s2">    &quot;title&quot;: &quot;FEWER-TOKEN NEURAL SPEECH CODEC WITH TIME-INVARIANT CODES&quot;,</span>
+<span class="s2">    &quot;authors&quot;: [</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Yong Ren&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                1,</span>
+<span class="s2">                2</span>
+<span class="s2">            ]</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Tao Wang&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                1</span>
+<span class="s2">            ]</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Jiangyan Yi&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                1</span>
+<span class="s2">            ]</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Le Xu&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                1,</span>
+<span class="s2">                2</span>
+<span class="s2">            ]</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Jianhua Tao&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                3</span>
+<span class="s2">            ]</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Chuyuan Zhang&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                1,</span>
+<span class="s2">                2</span>
+<span class="s2">            ]</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;name&quot;: &quot;Junzuo Zhou&quot;,</span>
+<span class="s2">            &quot;email&quot;: null,</span>
+<span class="s2">            &quot;affiliations&quot;: [</span>
+<span class="s2">                1,</span>
+<span class="s2">                2</span>
+<span class="s2">            ]</span>
+<span class="s2">        }</span>
+<span class="s2">    ],</span>
+<span class="s2">    &quot;affiliations&quot;: [</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;index&quot;: 1,</span>
+<span class="s2">            &quot;name&quot;: &quot;Institute of Automation, Chinese Academy of Sciences, China&quot;,</span>
+<span class="s2">            &quot;longitude&quot;: &quot;116.331398&quot;,</span>
+<span class="s2">            &quot;latitude&quot;: &quot;39.897445&quot;</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;index&quot;: 2,</span>
+<span class="s2">            &quot;name&quot;: &quot;University of Chinese Academy of Sciences, China&quot;,</span>
+<span class="s2">            &quot;longitude&quot;: &quot;116.651381&quot;,</span>
+<span class="s2">            &quot;latitude&quot;: &quot;40.12114&quot;</span>
+<span class="s2">        },</span>
+<span class="s2">        {</span>
+<span class="s2">            &quot;index&quot;: 3,</span>
+<span class="s2">            &quot;name&quot;: &quot;Department of Automation, Tsinghua University, China&quot;,</span>
+<span class="s2">            &quot;longitude&quot;: &quot;116.326443&quot;,</span>
+<span class="s2">            &quot;latitude&quot;: &quot;40.00368&quot;</span>
+<span class="s2">        }</span>
+<span class="s2">    ]</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Evaluate on a sample</p>
+<p>To evaluate the perfomance of the GPT on your dataset, you need some way of externally validating it. At least a portion of your data must be labelled with the correct (or at least likely correct) output. This is called a <code class="docutils literal notranslate"><span class="pre">gold</span> <span class="pre">standard</span></code>.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_prompt_instructions</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Extract the title and authors and affiliations from the first page of a scientific paper. </span>
+
+<span class="s2">Use the following step-by-step instructions to respond to user inputs.</span>
+
+<span class="s2">Extract the title and authors from the first page of a scientific paper. The paper text will snipped will be delimited by triple quotes. Geolocate each author affiliation with latitude and longitude.</span>
+
+<span class="s2">The output should have the following format:</span>
+
+<span class="s2">{ &quot;title&quot;: &quot;The paper&#39;s title&quot;,</span>
+<span class="s2">  &quot;authors&quot;: [</span>
+<span class="s2">    {</span>
+<span class="s2">      &quot;name&quot;: &quot;Yong Ren&quot;,</span>
+<span class="s2">      &quot;email&quot;: null,</span>
+<span class="s2">      &quot;affiliations&quot;: [ &quot;list of indices&quot; ]</span>
+<span class="s2">    }</span>
+<span class="s2">  ],</span>
+<span class="s2"> &quot;affiliations&quot;: [ {&quot;index&quot;: &quot;the index&quot;, &quot;name&quot;: &quot;The affiliation name&quot;, &quot;longitude&quot;: &quot;the longitude&quot;, &quot;latitude&quot;: &quot;the latitude&quot; } ]</span>
+<span class="s2"> ]</span>
+<span class="s2">}</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+
+
+<span class="k">def</span> <span class="nf">validate_response_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="s2">&quot;title&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;title not found&quot;</span>
+    <span class="k">assert</span> <span class="s2">&quot;authors&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;authors not found&quot;</span>
+    <span class="k">for</span> <span class="n">auth</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]:</span>
+        <span class="k">assert</span> <span class="s2">&quot;name&quot;</span> <span class="ow">in</span> <span class="n">auth</span><span class="p">,</span> <span class="s2">&quot;name not found&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;email&quot;</span> <span class="ow">in</span> <span class="n">auth</span><span class="p">,</span> <span class="s2">&quot;email not found&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;affiliations&quot;</span> <span class="ow">in</span> <span class="n">auth</span><span class="p">,</span> <span class="s2">&quot;affiliations not found&quot;</span>
+    <span class="k">assert</span> <span class="s2">&quot;affiliations&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;affiliations not found&quot;</span>
+    <span class="k">for</span> <span class="n">aff</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;affiliations&quot;</span><span class="p">]:</span>
+        <span class="k">assert</span> <span class="s2">&quot;index&quot;</span> <span class="ow">in</span> <span class="n">aff</span><span class="p">,</span> <span class="s2">&quot;index not found&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;name&quot;</span> <span class="ow">in</span> <span class="n">aff</span><span class="p">,</span> <span class="s2">&quot;name not found&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;longitude&quot;</span> <span class="ow">in</span> <span class="n">aff</span><span class="p">,</span> <span class="s2">&quot;longitude not found&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;latitude&quot;</span> <span class="ow">in</span> <span class="n">aff</span><span class="p">,</span> <span class="s2">&quot;latitude not found&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">analyze_text</span><span class="p">(</span><span class="n">client</span><span class="p">:</span> <span class="n">openai</span><span class="o">.</span><span class="n">Client</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4-1106-preview&quot;</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are an expert research librarian. You are precise and can analyze the structure of papers very well. You return information in json format.&quot;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_prompt_instructions</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&quot;&quot;&quot;&#39;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&quot;&quot;&quot;&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">],</span>
+        <span class="n">response_format</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;json_object&quot;</span><span class="p">},</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">max_tokens</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">frequency_penalty</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">presence_penalty</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">validate_response_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;extracted_info&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">analyze_text</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">df_sample</span><span class="o">.</span><span class="n">to_parquet</span><span class="p">(</span><span class="s2">&quot;sample_output.parquet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df_gold</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;./data/arxiv_metadata.parquet&quot;</span><span class="p">)</span>
+<span class="n">df_extracted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;./data/extracted_data.parquet&quot;</span><span class="p">)</span>
+
+<span class="n">true_positives</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">false_positives</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">false_negatives</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">df_extracted</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]:</span>
+    <span class="n">gold_authors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_gold</span><span class="p">[</span><span class="n">df_gold</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">id</span><span class="p">][</span><span class="s2">&quot;authors&quot;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">gold_authors</span> <span class="o">=</span> <span class="p">{</span><span class="n">a</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">gold_authors</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)}</span>
+
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">df_extracted</span><span class="p">[</span><span class="n">df_extracted</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">id</span><span class="p">]</span>
+    <span class="n">predicted_authors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">predicted</span><span class="p">[</span><span class="s2">&quot;author&quot;</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">predicted_authors</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">gold_authors</span><span class="p">:</span>
+            <span class="n">true_positives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">id</span><span class="p">,</span> <span class="n">author</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">false_positives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">id</span><span class="p">,</span> <span class="n">author</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">gold_authors</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">author</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">predicted_authors</span><span class="p">:</span>
+            <span class="n">false_negatives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">id</span><span class="p">,</span> <span class="n">author</span><span class="p">))</span>
+
+
+<span class="c1"># round precision to 2 decimal places</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span>
+                  <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">false_positives</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># round recall to 2 decimal places</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">/</span>
+               <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">false_negatives</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;true_positives count: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">true_positives</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;false_positives count: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">false_positives</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;false_negatives count: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">false_negatives</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;precision:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;recall:&quot;</span><span class="p">,</span> <span class="n">recall</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true_positives count: 3884
+false_positives count: 364
+false_negatives count: 316
+precision: 0.91
+recall: 0.92
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp_sample</span> <span class="o">=</span> <span class="p">{</span><span class="n">fp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">false_positives</span> <span class="k">if</span> <span class="n">fp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2310.08102&quot;</span><span class="p">}</span>
+<span class="n">fn_sample</span> <span class="o">=</span> <span class="p">{</span><span class="n">fn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">false_negatives</span> <span class="k">if</span> <span class="n">fn</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;2310.08102&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;False positives for id 2310.08102</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">fp</span> <span class="ow">in</span> <span class="n">fp_sample</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">False negatives for id 2310.08102</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fn_sample</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False positives for id 2310.08102
+
+  Alham Fikri Aji
+  Muhammad Razif Rizqullah
+  Ayu Purwarianti
+
+False negatives for id 2310.08102
+
+  Ayu Purwarianti (1) and Alham Fikri Aji
+  (2) ((1) Bandung Institute of Technology
+  Muhammad Razif Rizqullah (1)
+  (2) Mohamed bin Zayed University of
+  Artificial Intelligence)
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-default" id="arxiv-fp-fn-example">
+<a class="reference internal image-reference" href="_images/arxiv-fp-fn-example.png"><img alt="_images/arxiv-fp-fn-example.png" src="_images/arxiv-fp-fn-example.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text"><a class="reference external" href="https://arxiv.org/abs/2310.08102">Paper</a></span><a class="headerlink" href="#arxiv-fp-fn-example" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="note admonition">
+<p class="admonition-title">Other Forms of Evaluation</p>
+<p>Now let’s map these geo-coordinates to get a sanity check on how well GPT-4 did the geo-coding. This is not a substitute for a quantitivate analysis, but it does give us more confidence if it looks reasonable</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">ipyleaflet</span> <span class="kn">import</span> <span class="n">Map</span><span class="p">,</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">Popup</span><span class="p">,</span> <span class="n">MarkerCluster</span>
+
+<span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="mf">42.0451</span><span class="p">,</span> <span class="o">-</span><span class="mf">87.6877</span><span class="p">)</span>
+<span class="n">map2</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">close_popup_on_click</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">markers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_extracted</span><span class="o">.</span><span class="n">iterrows</span><span class="p">())[:</span><span class="mi">100</span><span class="p">]:</span>
+    <span class="n">marker</span> <span class="o">=</span> <span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;latitude&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;longitude&quot;</span><span class="p">]))</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">()</span>
+    <span class="n">message</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: &lt;b&gt;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;affiliation&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/b&gt;&quot;</span>
+    <span class="n">marker</span><span class="o">.</span><span class="n">popup</span> <span class="o">=</span> <span class="n">message</span>
+    <span class="n">markers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+
+<span class="n">map2</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">MarkerCluster</span><span class="p">(</span><span class="n">markers</span><span class="o">=</span><span class="n">markers</span><span class="p">))</span>
+
+<span class="n">map2</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1a26e527d5a4437d9f8508b90b7459fb", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Deploy</p>
+<p>Deployment of this code to the full dataset requires pre-cautions:</p>
+<ul class="simple">
+<li><p>Structure your code into source code (functions) along with unit tests</p></li>
+<li><p>Functions are composed in scripts, which should have runtime tests and generate logs</p></li>
+<li><p>All code (source, scripts, tests) need to be in source control, typically <code class="docutils literal notranslate"><span class="pre">git</span></code></p></li>
+<li><p>Save logs and output files in a secure location. Do not modify them.</p></li>
+</ul>
+<figure class="align-default" id="testing">
+<a class="reference internal image-reference" href="_images/testing.png"><img alt="_images/testing.png" src="_images/testing.png" style="width: 500px;" /></a>
+</figure>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Unit Testing</div>
+<video width="99%" height="600" controls muted markdown="1">
+    <source src="_images/unit-testing.mp4" type="video/mp4" markdown="1" >
+</video>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Runtime Validation</div>
+<video width="99%" height="600" controls muted markdown="1">
+    <source src="_images/run-cli.mp4" type="video/mp4" markdown="1" >
+</video>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="arxiv-dataset.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">arXiv Dataset</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="llamachain.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">llamachain</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Will Thompson
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
