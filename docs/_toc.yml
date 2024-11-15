@@ -1,0 +1,20 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: arxiv-dataset
+- file: arxiv-extract
+- file: llamachain
+- file: dspy
+# - file: nlp
+# - file: python
+# - file: llms-for-programming
+# - file: multiprocessing
+# - file: transformers
+#- file: coffee
+#- file: whiskey
+#- file: cycling
+#- file: notebooks
+#- file: markdown-notebooks
