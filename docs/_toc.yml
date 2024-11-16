@@ -6,7 +6,7 @@ root: intro
 chapters:
 - file: arxiv-dataset
 - file: arxiv-extract
-- file: llamachain
+- file: openai-batch
 - file: dspy
 # - file: nlp
 # - file: python
