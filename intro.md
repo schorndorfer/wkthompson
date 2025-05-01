@@ -1,7 +1,7 @@
 # Notes
 
 % Animans Sapiens
-:::{figure} ./images/octopus.jpg
+:::{figure} octopus.jpg
 :label: fig:octopus
 :width: 800px
 :height: 400px
