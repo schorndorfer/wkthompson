@@ -2,12 +2,14 @@
 version: 1
 project:
   id: f857b9dd-e69f-4dd1-aa60-387e56793370
-  # title:
+  title: "Notes from a Sentient Beingr"
   # description:
   # keywords: []
-  # authors: []
-  # github:
+  authors: [Will Thompson]
+  github: https://github.com/schorndorfer/wkthompson
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+  toc:
+    - file: intro.md
 site:
   template: book-theme
   # options:
