@@ -21,4 +21,4 @@ site:
     # logo: ./images/shoebill-stork.jpg
     # logo_dark: ./images/octopus.jpg
     logo_text: "Animans Sapiens"
-    style: ./my-style.css
+    style: ./public/my-style.css
