@@ -18,7 +18,7 @@ site:
       url: /external-resource
   options:
     # favicon: favicon.ico
-    logo: ./images/shoebill-stork.jpg
-    logo_dark: ./images/octopus.jpg
-    logo_text: "Animans sapiens"
+    # logo: ./images/shoebill-stork.jpg
+    # logo_dark: ./images/octopus.jpg
+    logo_text: "Animans Sapiens"
     style: ./my-style.css
