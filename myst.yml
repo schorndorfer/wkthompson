@@ -22,3 +22,4 @@ site:
     # logo_dark: ./images/octopus.jpg
     logo_text: "Animans Sapiens"
     style: ./public/my-style.css
+    
