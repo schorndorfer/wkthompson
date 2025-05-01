@@ -1,1 +1,3 @@
-# Notes from a Sentient Being
+# Animans Sapiens
+
+![An octopus](./images/octopus.jpg)
