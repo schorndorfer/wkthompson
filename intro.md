@@ -1,4 +1,4 @@
-# Notes
+# Notes from a Sentient Being
 
 % Animans Sapiens
 :::{figure} ./images/octopus.jpg
