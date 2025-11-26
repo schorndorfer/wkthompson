@@ -14,11 +14,11 @@ project:
     
 site:
   template: book-theme
-  nav:
-    - title: Internal page
-      url: /website-metadata
-    - title: External page
-      url: /external-resource
+  # nav:
+  #   - title: Internal page
+  #     url: /website-metadata
+  #   - title: External page
+  #     url: /external-resource
   options:
     # favicon: favicon.ico
     # logo: ./images/shoebill-stork.jpg
