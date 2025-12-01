@@ -1,5 +1,6 @@
-# William Thompson, Ph.D.
-**Highland Park, IL** · **(312) 259-1808** · **will.k.t@gmail.com** · **[LinkedIn](https://www.linkedin.com/in/willkthompson/)** · **[Google Scholar](https://scholar.google.com/citations?hl=en&user=hrzhMRwAAAAJ&view_op=list_works&sortby=pubdate)** · **[Patents](https://patents.google.com/?inventor=William+K.+Thompson&assignee=Motorola&oq=William+K.+Thompson+Motorola)**
+# About Me
+<!-- **Highland Park, IL** · **(312) 259-1808** · **will.k.t@gmail.com** ·  -->
+**[LinkedIn](https://www.linkedin.com/in/willkthompson/)** · **[Google Scholar](https://scholar.google.com/citations?hl=en&user=hrzhMRwAAAAJ&view_op=list_works&sortby=pubdate)** · **[Patents](https://patents.google.com/?inventor=William+K.+Thompson&assignee=Motorola&oq=William+K.+Thompson+Motorola)**
 
 ---
 
